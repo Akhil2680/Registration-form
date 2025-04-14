@@ -1,0 +1,92 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.form-section {
+    width: 48%;
+    padding: 20px;
+    background-color: #e6dede;
+    border-radius: 8px;
+}
+
+.output-section {
+    width: 48%;
+    padding: 20px;
+    background-color: #e9f7ef;
+    border-radius: 8px;
+}
+
+h1,
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #444;
+}
+
+input,
+select {
+    margin-top: 5px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.checkbox-group,
+.radio-group {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.checkbox-group label,
+.radio-group label {
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #df919a;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #ed8aa8;
+}
+
+.output-content {
+    margin-top: 20px;
+}
+
+.output-content p {
+    margin: 10px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.output-content strong {
+    color: #333;
+}
