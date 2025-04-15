@@ -42,44 +42,41 @@
 
             <button type="submit">Submit</button>
         </form>
-        <!-- </div>
-  
+    </div>
+
     @if (submissions.length > 0) {
-      <div class="submissions-table">
+    <div class="submissions-table">
         <h2>Submission History</h2>
         <table>
-          <thead>
-            <tr>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>DOB</th>
-              <th>Gender</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Hobbies</th>
-              <th>Indian?</th>
-            </tr>
-          </thead>
-          <tbody>
-            @for (submission of submissions; track $index) {
-              <tr>
-                <td>{{ submission.firstName }}</td>
-                <td>{{ submission.lastName }}</td>
-                <td>{{ submission.dob }}</td>
-                <td>{{ submission.gender }}</td>
-                <td>{{ submission.email }}</td>
-                <td>{{ submission.phone }}</td>
-                <td>
-                  @if (submission.reading) { Reading }
-                  @if (submission.sports) { Sports }
-                  @if (submission.music) { Music }
-                  @if (submission.traveling) { Traveling }
-                </td>
-                <td>{{ submission.isIndian }}</td>
-              </tr>
-            }
-          </tbody>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>DOB</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Hobbies</th>
+                    <th>Indian?</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (submission of submissions; track $index) {
+                <tr>
+                    <td>{{ submission.firstName }}</td>
+                    <td>{{ submission.lastName }}</td>
+                    <td>{{ submission.dob }}</td>
+                    <td>{{ submission.gender }}</td>
+                    <td>{{ submission.email }}</td>
+                    <td>{{ submission.phone }}</td>
+                    <td>
+                        @if (submission.reading) { Reading } @if (submission.sports) { Sports } @if (submission.music) { Music } @if (submission.traveling) { Traveling }
+                    </td>
+                    <td>{{ submission.isIndian }}</td>
+                </tr>
+                }
+            </tbody>
         </table>
-      </div>
+    </div>
     }
-  </div> -->
+</div>
