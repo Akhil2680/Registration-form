@@ -1,18 +1,17 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, NgIf]
+  imports: [CommonModule, ReactiveFormsModule],
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'my-form-app'; // Add this line
   registrationForm: FormGroup;
-  submittedData: any = null;
+  submissions: any[] = [];
 
   constructor(private fb: FormBuilder) {
     this.registrationForm = this.fb.group({
@@ -32,12 +31,12 @@ export class AppComponent {
 
   onSubmit() {
     if (this.registrationForm.valid) {
-      this.submittedData = this.registrationForm.value;
-      // Format the date for display
-      if (this.submittedData.dob) {
-        const date = new Date(this.submittedData.dob);
-        this.submittedData.dob = date.toLocaleDateString();
+      const formData = {...this.registrationForm.value};
+      if (formData.dob) {
+        formData.dob = new Date(formData.dob).toLocaleDateString();
       }
+      this.submissions.push(formData);
+      this.registrationForm.reset();
     }
   }
 }

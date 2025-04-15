@@ -1,57 +1,41 @@
 .container {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 20px;
 }
 
 .form-section {
-    width: 48%;
+    background: #f8f9fa;
     padding: 20px;
-    background-color: #e6dede;
     border-radius: 8px;
-}
-
-.output-section {
-    width: 48%;
-    padding: 20px;
-    background-color: #e9f7ef;
-    border-radius: 8px;
-}
-
-h1,
-h2 {
-    text-align: center;
-    color: #333;
+    margin-bottom: 20px;
 }
 
 form {
     display: flex;
     flex-direction: column;
+    gap: 15px;
 }
 
 label {
-    margin-top: 10px;
     font-weight: bold;
-    color: #444;
+    display: block;
+    margin-bottom: 5px;
 }
 
 input,
 select {
-    margin-top: 5px;
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 14px;
+    width: 100%;
 }
 
 .checkbox-group,
 .radio-group {
-    margin-top: 5px;
     display: flex;
-    flex-direction: column;
-    gap: 5px;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
 .checkbox-group label,
@@ -63,30 +47,41 @@ select {
 }
 
 button {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #df919a;
+    padding: 10px 15px;
+    background: #e20808;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
+    margin-top: 10px;
 }
 
 button:hover {
-    background-color: #ed8aa8;
+    background: #b53410;
 }
 
-.output-content {
-    margin-top: 20px;
+.submissions-table {
+    margin-top: 30px;
 }
 
-.output-content p {
-    margin: 10px 0;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #f2f2f2;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
 }
 
-.output-content strong {
-    color: #333;
+th,
+td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
 }

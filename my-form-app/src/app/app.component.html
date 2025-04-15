@@ -4,70 +4,82 @@
         <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
 
             <label>First Name</label>
-            <input type="text" formControlName="firstName" required />
-
+            <input type="text" formControlName="firstName" required>
 
             <label>Last Name</label>
-            <input type="text" formControlName="lastName" required />
-
+            <input type="text" formControlName="lastName" required>
 
             <label>Date of Birth</label>
-            <input type="date" formControlName="dob" required />
-
+            <input type="date" formControlName="dob" required>
 
             <label>Gender</label>
             <select formControlName="gender" required>
-        <option value="">Select Gender</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-        <option value="Other">Other</option>
-      </select>
-
+          <option value="">Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
 
             <label>Email</label>
-            <input type="email" formControlName="email" required />
-
+            <input type="email" formControlName="email" required>
 
             <label>Phone Number</label>
-            <input type="tel" formControlName="phone" required />
-
+            <input type="tel" formControlName="phone" required>
 
             <label>Hobbies</label>
             <div class="checkbox-group">
-                <label><input type="checkbox" formControlName="reading" /> Reading</label>
-                <label><input type="checkbox" formControlName="sports" /> Sports</label>
-                <label><input type="checkbox" formControlName="music" /> Music</label>
-                <label><input type="checkbox" formControlName="traveling" /> Traveling</label>
+                <label><input type="checkbox" formControlName="reading"> Reading</label>
+                <label><input type="checkbox" formControlName="sports"> Sports</label>
+                <label><input type="checkbox" formControlName="music"> Music</label>
+                <label><input type="checkbox" formControlName="traveling"> Traveling</label>
             </div>
-
 
             <label>Are you Indian?</label>
             <div class="radio-group">
-                <label><input type="radio" formControlName="isIndian" value="Yes" /> Yes</label>
-                <label><input type="radio" formControlName="isIndian" value="No" /> No</label>
+                <label><input type="radio" formControlName="isIndian" value="Yes"> Yes</label>
+                <label><input type="radio" formControlName="isIndian" value="No"> No</label>
             </div>
-
 
             <button type="submit">Submit</button>
         </form>
-    </div>
-
-    <div class="output-section" *ngIf="submittedData">
-        <h1>Submitted Data</h1>
-        <div class="output-content">
-            <p><strong>First Name:</strong> {{ submittedData.firstName }}</p>
-            <p><strong>Last Name:</strong> {{ submittedData.lastName }}</p>
-            <p><strong>Date of Birth:</strong> {{ submittedData.dob }}</p>
-            <p><strong>Gender:</strong> {{ submittedData.gender }}</p>
-            <p><strong>Email:</strong> {{ submittedData.email }}</p>
-            <p><strong>Phone Number:</strong> {{ submittedData.phone }}</p>
-            <p><strong>Hobbies:</strong>
-                <span *ngIf="submittedData.reading">Reading, </span>
-                <span *ngIf="submittedData.sports">Sports, </span>
-                <span *ngIf="submittedData.music">Music, </span>
-                <span *ngIf="submittedData.traveling">Traveling</span>
-            </p>
-            <p><strong>Indian Citizen:</strong> {{ submittedData.isIndian }}</p>
-        </div>
-    </div>
-</div>
+        <!-- </div>
+  
+    @if (submissions.length > 0) {
+      <div class="submissions-table">
+        <h2>Submission History</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>DOB</th>
+              <th>Gender</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Hobbies</th>
+              <th>Indian?</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (submission of submissions; track $index) {
+              <tr>
+                <td>{{ submission.firstName }}</td>
+                <td>{{ submission.lastName }}</td>
+                <td>{{ submission.dob }}</td>
+                <td>{{ submission.gender }}</td>
+                <td>{{ submission.email }}</td>
+                <td>{{ submission.phone }}</td>
+                <td>
+                  @if (submission.reading) { Reading }
+                  @if (submission.sports) { Sports }
+                  @if (submission.music) { Music }
+                  @if (submission.traveling) { Traveling }
+                </td>
+                <td>{{ submission.isIndian }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    }
+  </div> -->
