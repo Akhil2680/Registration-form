@@ -12,6 +12,8 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   registrationForm: FormGroup;
   submissions: any[] = [];
+  isEditing: boolean = false;
+  currentEditIndex: number | null = null;
 
   constructor(private fb: FormBuilder) {
     this.registrationForm = this.fb.group({
@@ -35,8 +37,52 @@ export class AppComponent {
       if (formData.dob) {
         formData.dob = new Date(formData.dob).toLocaleDateString();
       }
-      this.submissions.push(formData);
+
+      if (this.isEditing && this.currentEditIndex !== null) {
+        // Update existing entry
+        this.submissions[this.currentEditIndex] = formData;
+        this.isEditing = false;
+        this.currentEditIndex = null;
+      } else {
+        // Add new entry
+        this.submissions.push(formData);
+      }
+      
       this.registrationForm.reset();
     }
+  }
+
+  onEdit(index: number) {
+    const submission = this.submissions[index];
+    this.registrationForm.patchValue({
+      firstName: submission.firstName,
+      lastName: submission.lastName,
+      dob: submission.dob,
+      gender: submission.gender,
+      email: submission.email,
+      phone: submission.phone,
+      reading: submission.reading,
+      sports: submission.sports,
+      music: submission.music,
+      traveling: submission.traveling,
+      isIndian: submission.isIndian
+    });
+    this.isEditing = true;
+    this.currentEditIndex = index;
+  }
+
+  onDelete(index: number) {
+    this.submissions.splice(index, 1);
+    if (this.currentEditIndex === index) {
+      this.isEditing = false;
+      this.currentEditIndex = null;
+      this.registrationForm.reset();
+    }
+  }
+
+  cancelEdit() {
+    this.isEditing = false;
+    this.currentEditIndex = null;
+    this.registrationForm.reset();
   }
 }
