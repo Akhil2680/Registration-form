@@ -1,0 +1,152 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="h4 mb-0">Registration Form</h2>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+
+                        <!-- First Name + Last Name -->
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">First Name</label>
+                                <input type="text" class="form-control" formControlName="firstName" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" class="form-control" formControlName="lastName" required>
+                            </div>
+                        </div>
+
+                        <!-- Date of Birth + Gender -->
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Date of Birth</label>
+                                <input type="date" class="form-control" formControlName="dob" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Gender</label>
+                                <select class="form-select" formControlName="gender" required>
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                            </div>
+                        </div>
+
+                        <!-- Email + Phone -->
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" formControlName="email" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Phone</label>
+                                <input type="tel" class="form-control" formControlName="phone" required>
+                            </div>
+                        </div>
+
+                        <!-- Hobbies -->
+                        <div class="mb-1">
+                            <label class="form-label">Hobbies</label>
+                            <div class="d-flex gap-4">
+                                <div class="form-check d-flex gap-1 mx-2">
+                                    <input class="form-check-input" type="checkbox" id="reading" formControlName="reading">
+                                    <label class="form-check-label" for="reading">Reading</label>
+                                </div>
+                                <div class="form-check d-flex gap-1 mx-">
+                                    <input class="form-check-input" type="checkbox" id="sports" formControlName="sports">
+                                    <label class="form-check-label" for="sports">Sports</label>
+                                </div>
+                                <div class="form-check d-flex gap-1 mx-2">
+                                    <input class="form-check-input" type="checkbox" id="music" formControlName="music">
+                                    <label class="form-check-label" for="music">Music</label>
+                                </div>
+                                <div class="form-check d-flex gap-1  ">
+                                    <input class="form-check-input" type="checkbox" id="traveling" formControlName="traveling">
+                                    <label class="form-check-label" for="traveling">Traveling</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Indian Citizen -->
+                        <div class="mb-4">
+                            <label class="form-label">Are you Indian?</label>
+                            <div class="d-flex gap-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="indianYes" formControlName="isIndian" value="Yes">
+                                    <label class="form-check-label" for="indianYes">Yes</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="indianNo" formControlName="isIndian" value="No">
+                                    <label class="form-check-label" for="indianNo">No</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-flex gap-2">
+                            @if (isEditing) {
+                            <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancel</button> }
+                            <button type="submit" class="btn btn-primary flex-grow-1">
+                  {{ isEditing ? 'Update' : 'Submit' }}
+                </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Submissions Table -->
+        <div class="col-md-6 mt-4 mt-md-0">
+            <div class="card shadow">
+                <div class="card-header bg-info text-white">
+                    <h2 class="h4 mb-0">Submissions</h2>
+                </div>
+                <div class="card-body">
+                    @if (submissions.length > 0) {
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (submission of submissions; track $index) {
+                                <tr>
+                                    <td>{{ submission.firstName }} {{ submission.lastName }}</td>
+                                    <td>{{ submission.email }}</td>
+                                    <!-- In your submissions table -->
+                                    <td class="text-nowrap">
+                                        <!-- Edit Icon Button -->
+                                        <button (click)="onEdit($index)" class="btn btn-link text-primary p-0 me-2" [disabled]="isEditing && currentEditIndex === $index">
+      <i class="bi bi-pencil-square fs-5"></i>
+    </button>
+
+                                        <!-- Delete Icon Button -->
+                                        <button (click)="onDelete($index)" class="btn btn-link text-danger p-0">
+      <i class="bi bi-trash fs-5"></i>
+    </button>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    } @else {
+                    <div class="text-center text-muted py-4">
+                        <i class="bi bi-table fs-1"></i>
+                        <p class="mt-2">No submissions yet</p>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
